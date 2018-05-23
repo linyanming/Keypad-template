@@ -3826,13 +3826,16 @@ end
 --[[=============================================================================
     KeypadProxy Proxy Commands(PRX_CMD)
 ===============================================================================]]
-function KeypadProxy:prx_BUTTON_ACTION(tParams)
+function KeypadProxy:prx_KEYPAD_BUTTON_ACTION(tParams)
     tParams = tParams or {}
     local cmd = {}
     local btnid = tParams["BUTTON_ID"]
+    local action = tParams["ACTION"]
+    print("btnid = ".. btnid .."action = "..action .. "typeof action = " .. type(action))
     cmd.BUTTON_ID = btnid
-    cmd.ACTION = 1
+    cmd.ACTION = action
     NOTIFY.KEYPAD_BUTTON_ACTION(self._BindingID,cmd)
+    
 end
 
 --[[=============================================================================
@@ -3917,10 +3920,14 @@ if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.keypad_proxy_commands = "2018.05.23"
 end
 
+--[[
 function PRX_CMD.BUTTON_ACTION(idBinding, tParams)
 	gKeypadProxy:prx_BUTTON_ACTION(tParams)
 end
-
+]]
+function PRX_CMD.KEYPAD_BUTTON_ACTION(idBinding, tParams)
+	gKeypadProxy:prx_KEYPAD_BUTTON_ACTION(tParams)
+end
 --[[
 function PRX_CMD.SET_ADDRESS(idBinding, tParams)
 	gCameraProxy:prx_SET_ADDRESS(tParams)

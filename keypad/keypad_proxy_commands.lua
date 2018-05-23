@@ -9,10 +9,14 @@ if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.keypad_proxy_commands = "2018.05.23"
 end
 
+--[[
 function PRX_CMD.BUTTON_ACTION(idBinding, tParams)
 	gKeypadProxy:prx_BUTTON_ACTION(tParams)
 end
-
+]]
+function PRX_CMD.KEYPAD_BUTTON_ACTION(idBinding, tParams)
+	gKeypadProxy:prx_KEYPAD_BUTTON_ACTION(tParams)
+end
 --[[
 function PRX_CMD.SET_ADDRESS(idBinding, tParams)
 	gCameraProxy:prx_SET_ADDRESS(tParams)

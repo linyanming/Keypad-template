@@ -8,11 +8,11 @@
   <name>Keypad Proxy Template</name>
   <model>Keypad Proxy Template</model>
   <created>05/23/2018 10:01 AM</created>
-  <modified>05/23/2018 2:29 PM</modified>
+  <modified>05/23/2018 4:06 PM</modified>
   <!-- 
 	Each time you modify the driver update the version number below.
 	-->
-  <version>13</version>
+  <version>22</version>
   <capabilities>
     <!-- 
 		These are the modes the camera might support.  If the camera does not support H264 then remove the H264 entries

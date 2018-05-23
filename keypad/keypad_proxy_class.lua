@@ -37,13 +37,16 @@ end
 --[[=============================================================================
     KeypadProxy Proxy Commands(PRX_CMD)
 ===============================================================================]]
-function KeypadProxy:prx_BUTTON_ACTION(tParams)
+function KeypadProxy:prx_KEYPAD_BUTTON_ACTION(tParams)
     tParams = tParams or {}
     local cmd = {}
     local btnid = tParams["BUTTON_ID"]
+    local action = tParams["ACTION"]
+    print("btnid = ".. btnid .."action = "..action .. "typeof action = " .. type(action))
     cmd.BUTTON_ID = btnid
-    cmd.ACTION = 1
+    cmd.ACTION = action
     NOTIFY.KEYPAD_BUTTON_ACTION(self._BindingID,cmd)
+    
 end
 
 --[[=============================================================================
