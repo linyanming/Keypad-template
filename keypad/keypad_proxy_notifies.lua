@@ -15,6 +15,12 @@ function NOTIFY.NEW_KEYPAD_BUTTON(bindingID,newbutton)
      SendNotify("NEW_KEYPAD_BUTTON", newbutton, bindingID)
 end
 
+function NOTIFY.KEYPAD_BUTTON_ACTION(bindingID,cmd)
+     LogTrace("KEYPAD_BUTTON_ACTION")
+	print("bindingID = ".. bindingID) 
+     SendNotify("KEYPAD_BUTTON_ACTION", cmd, bindingID)
+end
+
 --[[
 function NOTIFY.PROPERTY_DEFAULTS(bindingID, tPropertyDefaults)
 	LogTrace("NOTIFY.PROPERTY_DEFAULTS")

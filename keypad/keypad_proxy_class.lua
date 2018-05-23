@@ -33,6 +33,19 @@ function KeypadProxy:dev_Newbuttoncreate(buttonid,buttonname)
 	NOTIFY.NEW_KEYPAD_BUTTON(self._BindingID, new_button)
 end
 
+
+--[[=============================================================================
+    KeypadProxy Proxy Commands(PRX_CMD)
+===============================================================================]]
+function KeypadProxy:prx_BUTTON_ACTION(tParams)
+    tParams = tParams or {}
+    local cmd = {}
+    local btnid = tParams["BUTTON_ID"]
+    cmd.BUTTON_ID = btnid
+    cmd.ACTION = 1
+    NOTIFY.KEYPAD_BUTTON_ACTION(self._BindingID,cmd)
+end
+
 --[[=============================================================================
     Camera Proxy Commands(PRX_CMD)
 ===============================================================================]]

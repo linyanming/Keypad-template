@@ -3822,6 +3822,19 @@ function KeypadProxy:dev_Newbuttoncreate(buttonid,buttonname)
 	NOTIFY.NEW_KEYPAD_BUTTON(self._BindingID, new_button)
 end
 
+
+--[[=============================================================================
+    KeypadProxy Proxy Commands(PRX_CMD)
+===============================================================================]]
+function KeypadProxy:prx_BUTTON_ACTION(tParams)
+    tParams = tParams or {}
+    local cmd = {}
+    local btnid = tParams["BUTTON_ID"]
+    cmd.BUTTON_ID = btnid
+    cmd.ACTION = 1
+    NOTIFY.KEYPAD_BUTTON_ACTION(self._BindingID,cmd)
+end
+
 --[[=============================================================================
     Camera Proxy Commands(PRX_CMD)
 ===============================================================================]]
@@ -3902,6 +3915,10 @@ package.preload['keypad.keypad_proxy_commands'] = (function (...)
 -- This macro is utilized to identify the version string of the driver template version used.
 if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.keypad_proxy_commands = "2018.05.23"
+end
+
+function PRX_CMD.BUTTON_ACTION(idBinding, tParams)
+	gKeypadProxy:prx_BUTTON_ACTION(tParams)
 end
 
 --[[
@@ -4012,6 +4029,12 @@ function NOTIFY.NEW_KEYPAD_BUTTON(bindingID,newbutton)
      LogTrace("NOTIFY.NEW_KEYPAD_BUTTON")
 	print("bindingID = ".. bindingID)
      SendNotify("NEW_KEYPAD_BUTTON", newbutton, bindingID)
+end
+
+function NOTIFY.KEYPAD_BUTTON_ACTION(bindingID,cmd)
+     LogTrace("KEYPAD_BUTTON_ACTION")
+	print("bindingID = ".. bindingID) 
+     SendNotify("KEYPAD_BUTTON_ACTION", cmd, bindingID)
 end
 
 --[[
